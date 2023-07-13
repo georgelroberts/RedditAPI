@@ -69,7 +69,7 @@ def plotDict(dictToPlot, numberOfCountries, subName, numberOfPosts):
     countryList = list(dictToPlot.items())
     countryList = sorted(countryList, key=itemgetter(1), reverse=True)
     if len(countryList) > numberOfCountries:
-        countryList = countryList[0:numberOfCountries]
+        countryList = countryList[:numberOfCountries]
     x = list(zip(*countryList))[0]
     y = list(zip(*countryList))[1]
     x_pos = np.arange(len(x))
@@ -79,9 +79,9 @@ def plotDict(dictToPlot, numberOfCountries, subName, numberOfPosts):
     plt.ylabel('Number of Mentions', fontsize=16)
     plt.xlabel("Country ", fontsize=16)
     plt.title(
-        'Country mentions in /r/' + subName +
-        ' comments from ' + str(numberOfPosts) + ' posts',
-        fontsize=18)
+        f'Country mentions in /r/{subName} comments from {str(numberOfPosts)} posts',
+        fontsize=18,
+    )
     plt.margins(0.05, 0.01)
     # plt.style.use('bmh')
     # plt.axis('tight')
